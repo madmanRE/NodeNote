@@ -1,0 +1,54 @@
+{% extends "_layout.njk" %}
+
+{% block style %}
+<style>
+  .uk-divider-icon + h2 {
+    margin-top: 0;
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+
+  {% if authError %}
+    <div class="uk-alert uk-alert-danger">
+      <p>{{ authError }}</p>
+    </div>
+  {% endif %}
+
+  <h2>Войти</h2>
+  <form method="POST" action="/auth/login" enctype="application/x-www-form-urlencoded">
+    <p><input type="text" name="username" class="uk-input"></p>
+    <p><input type="password" name="password" class="uk-input"></p>
+    <p><button class="uk-button uk-button-primary">Вход</button></p>
+  </form>
+
+
+  <hr class="uk-divider-icon" />
+
+  <h2>Зарегистрироваться</h2>
+  <form method="POST" action="/auth/signup" enctype="application/x-www-form-urlencoded">
+    <p><input type="text" name="username" class="uk-input"></p>
+    <p><input type="password" name="password" class="uk-input"></p>
+    <p><button class="uk-button uk-button-primary">Создать аккаунт</button></p>
+  </form>
+
+  <hr class="uk-divider-icon" />
+
+  <p uk-margin>
+    <!-- Можно добавить или удалить любые из этих кнопок -->
+    <a class="uk-button uk-button-secondary uk-button-large" href="/auth/google">
+      <i class="fab fa-vk"></i>&nbsp;
+      Vkontakte
+    </a>
+    <!--<button class="uk-button uk-button-secondary uk-button-large">
+      <i class="fab fa-facebook-f"></i>&nbsp;
+      Facebook
+    </button>
+    <button class="uk-button uk-button-secondary uk-button-large">
+      <i class="fab fa-github"></i>&nbsp;
+      Github
+    </button>-->
+  </p>
+
+{% endblock %}
